@@ -226,6 +226,7 @@ from sklearn.metrics import accuracy_score
 import joblib
 import os
 import json
+from utils import skill_tokenizer
 
 # ── Load Base Dataset ─────────────────────────────────────────
 df = pd.read_csv("data/job_skills_dataset.csv")
@@ -296,8 +297,8 @@ X = (
 y = aug_df["target_role"].values
 
 # ── Tokenizer (IMPORTANT for pickle) ─────────────────────────
-def skill_tokenizer(text):
-    return [s.strip().lower() for s in text.split(",")]
+# def skill_tokenizer(text):
+#     return [s.strip().lower() for s in text.split(",")]
 
 # ── TF-IDF Vectorizer ────────────────────────────────────────
 vectorizer = TfidfVectorizer(

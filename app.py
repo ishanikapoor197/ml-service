@@ -3,14 +3,14 @@ from flask_cors import CORS
 import joblib
 import json
 import numpy as np
+from utils import skill_tokenizer
 
 app = Flask(__name__)
 CORS(app)
 
 # Load trained model and artifacts
 model = joblib.load("model/skill_model.pkl")
-def skill_tokenizer(text):
-    return [s.strip().lower() for s in text.split(",")]
+
 vectorizer = joblib.load("model/vectorizer.pkl")
 
 with open("model/skills_dict.json", "r") as f:
